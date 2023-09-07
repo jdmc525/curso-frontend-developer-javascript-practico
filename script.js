@@ -1,4 +1,7 @@
 
+
+
+
 /*CODIGO PARA MOSTRAR  MENU DESKTOP*/
 const navBarEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
@@ -41,6 +44,7 @@ function toggleShopCartView() {
 }
 
 
+/*VISTA GRANDE DE PRODUCTO*/
 
 
 
@@ -118,11 +122,33 @@ productList.push ({
 });     
 
 
+const productDetailBig = document.querySelector('.product-detail-big'); 
+const productDetailClose = document.querySelector('.product-detail-close');
+productDetailClose.addEventListener('click', closeProductDetailView);
+
+
+function openProductDetailView() {
+    productDetailBig.classList.remove('inactive');
+    shopCartView.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
+    mobileMenu.classList.remove('activate');
+
+}
+
+
+function closeProductDetailView() {
+    productDetailBig.classList.add('inactive');
+}
+
+
+
 function imprimirProductos(arregloProductos) {
     for (producto of productList){
         const productCard = document.createElement('div');
         productCard.classList.add('product-card');
-    
+        
+        productCard.addEventListener('click', openProductDetailView);
+
         const img = document.createElement('img');
         img.setAttribute('src', producto.image);
     
